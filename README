@@ -1,0 +1,7 @@
+A 'pre-flight' checklist app for joining BigBlueButton conferences. Checks:
+
+- Webcam and Mic availability
+- Video and Audio streaming connectivity
+- Flash and Java versions
+
+Saves preferences for Webcams and Mics in a local SharedObject (Flash cookie)
