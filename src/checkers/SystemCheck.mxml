@@ -3,16 +3,31 @@
 	<mx:Script>
 		<![CDATA[
 			import connectors.AppsConnector;
+			
+			import util.JavaCheck;
 			private function init():void{
-				
+				checkFlash();
+				checkOS();
+				checkJava();
 			}
 			
 			private function checkFlash():void{
-				
+				var flashVersion:String = Capabilities.version;
+				txtOutput.text += "Flash Player version: " + flashVersion + "\n";
+			}
+			
+			private function checkOS():void{
+				var os:String = Capabilities.os;
+				txtOutput.text += "Operating System: " + os + "\n";
 			}
 			
 			private function checkJava():void{
-				
+				var javas:Array = JavaCheck.getJREs();
+				txtOutput.text += "Java versions installed: ";
+				for each (var java:String in javas){
+					txtOutput.text += java;
+				}
+				txtOutput.text += "\n";
 			}
 			
 			private function checkBBBApps():void{
@@ -21,6 +36,6 @@
 		]]>
 	</mx:Script>
 	
-	<mx:Text width="100%" height="100%" text="" selectable="false"/>
+	<mx:Text id="txtOutput" width="100%" height="100%" text="" selectable="false"/>
 	
 </mx:VBox>

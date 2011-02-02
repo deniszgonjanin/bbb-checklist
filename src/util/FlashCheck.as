@@ -1,4 +1,4 @@
-package checkers
+package util
 {
 	public class FlashCheck
 	{

@@ -43,6 +43,6 @@
 	<mx:ProgressBar id="micLevel" minimum="0" maximum="100" label="Microphone Activity" labelPlacement="top" 
 					direction="right" mode="manual" visible="true"/>
 	<mx:Label text="Adjust Volume" />
-	<mx:HSlider id="sldVolume" minimum="0" maximum="100" change="changeVolume()" />
+	<mx:HSlider id="sldVolume" minimum="0" maximum="100" change="changeVolume()" labels="[silent, loud]" />
 	<mx:ComboBox id="cmbMicSelector" dataProvider="{Microphone.names}" change="changeMic()" />
 </mx:VBox>
