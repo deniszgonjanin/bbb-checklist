@@ -4,20 +4,23 @@
 		 creationComplete="init()">
 	<mx:Script>
 		<![CDATA[
-			import mx.controls.Alert;
+			import connectors.VIdeoConnector;
+			
 			private var video:Video;
 			private var camera:Camera;
 			
 			[Bindable] private var camWidth:Number = 320;
 			[Bindable] private var camHeight:Number = 240;
-			
 			private var quality:Number = 0;
+			
+			private var videoConnector:VIdeoConnector;
 			
 			private function init():void{
 				checkIfMacCamera();
 				checkIfGoogleTalkPluginInstalled();
 				
 				showCamera();
+				this.videoConnector = new VIdeoConnector(camera);
 			}
 			
 			private function checkIfMacCamera():void{

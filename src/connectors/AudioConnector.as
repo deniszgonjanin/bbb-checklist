@@ -84,6 +84,12 @@ package connectors
 			outgoingStream.publish("echoStream", "live");
 		}
 		
+		public function changeMic(mic:Microphone):void{
+			this.mic = mic;
+			setupMicrophone();
+			outgoingStream.attachAudio(mic);
+		}
+		
 		private function setupMicrophone():void {
 			mic.setUseEchoSuppression(true);
 			//TODO Set loopBack to false once this is connected to the Asterisk/Freeswitch echo application

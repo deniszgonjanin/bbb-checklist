@@ -4,7 +4,6 @@
 		<![CDATA[
 			import connectors.AudioConnector;
 			
-			import mx.controls.Alert;
 			private var timer:Timer;
 			private var mic:Microphone;
 			
