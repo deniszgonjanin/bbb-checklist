@@ -6,8 +6,11 @@
 			
 			import util.JavaCheck;
 			import util.Requirements;
+			
+			private var reqs:Requirements;
+			
 			private function init():void{
-				var reqs:Requirements = new Requirements(requirementsLoaded);
+				reqs = new Requirements(requirementsLoaded);
 			}
 			
 			private function requirementsLoaded():void{
@@ -18,7 +21,7 @@
 			
 			private function checkFlash():void{
 				var flashVersion:String = Capabilities.version;
-				txtOutput.text += "Flash Player version: " + flashVersion + "\n";
+				txtOutput.text += "Flash Player version: " + flashVersion + " required is: " + reqs.flash_required_version + "\n";
 			}
 			
 			private function checkOS():void{
@@ -32,7 +35,7 @@
 				for each (var java:String in javas){
 					txtOutput.text += java;
 				}
-				txtOutput.text += "\n";
+				txtOutput.text += "version required is: " + reqs.java_required_version + "\n";
 			}
 			
 			private function checkBBBApps():void{
