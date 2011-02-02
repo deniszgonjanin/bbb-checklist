@@ -14,13 +14,13 @@
 			private var quality:Number = 0;
 			
 			private var videoConnector:VIdeoConnector;
+			private var ns:NetStream;
 			
 			private function init():void{
-				checkIfMacCamera();
-				checkIfGoogleTalkPluginInstalled();
+				this.videoConnector = new VIdeoConnector(onNetStatus);
 				
-				showCamera();
-				this.videoConnector = new VIdeoConnector(camera);
+				checkIfMacCamera();
+				checkIfGoogleTalkPluginInstalled();				
 			}
 			
 			private function checkIfMacCamera():void{
@@ -57,13 +57,45 @@
 				camera.setMode(camWidth,camHeight,15);
 				camera.setQuality(0,quality);
 				
-				video = new Video(camWidth, camHeight);
-				//Next two lines may seem redundant but they're not. Do not delete.
+				//The following few lines will just show the camera locally captured. What we want to do is stream it
+				/*video = new Video(camWidth, camHeight);
+				//Next two lines may seem redundant but they're not. Do not delete. They force the video to proper width & height
 				video.width = camWidth;
 				video.height = camHeight;
 				video.attachCamera(camera);
-				videoHolder.addChild(video);
+				videoHolder.addChild(video);*/
+				
+				videoConnector.connectVideo(camera, onNetStatus);
 
+			}
+			
+			public function onNetStatus(e:NetStatusEvent):void{
+				trace("WebcamChecker::onNetStatus - " + e.info.code);
+				switch(e.info.code){
+					case VIdeoConnector.CONNECT_SUCCESS:
+						showCamera();
+						break;
+					case VIdeoConnector.NETSTREAM_PUBLISH:
+						startVideo();
+						break;
+					default:
+						break;
+				}
+			}
+			
+			private function startVideo():void{				
+				ns = new NetStream(videoConnector.connection);
+				ns.client = this;
+				ns.bufferTime = 0;
+				ns.receiveVideo(true);
+				ns.receiveAudio(false);
+				
+				video = new Video(camWidth, camHeight);
+				video.width = camWidth;
+				video.height = camHeight;
+				video.attachNetStream(ns);
+				videoHolder.addChild(video);
+				ns.play("testStream");	
 			}
 
 		]]>

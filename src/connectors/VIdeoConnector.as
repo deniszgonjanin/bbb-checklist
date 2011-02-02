@@ -17,32 +17,34 @@ package connectors
 		public static const INVALID_APP:String = "NetConnection.Connect.InvalidApp";
 		public static const APP_SHUTDOWN:String = "NetConnection.Connect.AppShutDown";
 		public static const CONNECT_REJECTED:String = "NetConnection.Connect.Rejected";
+		public static const NETSTREAM_PUBLISH:String = "NetStream.Publish.Start";
 		
 		public static const VIDEO_APP:String = "rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/video";
 		
-		private var connection:NetConnection;
+		public var connection:NetConnection;
 		private var outgoingStream:NetStream;
 		private var incomingStream:NetStream;
 		
 		private var camera:Camera;
+		private var streamListener:Function;
 		
-		public function VIdeoConnector(camera:Camera)
-		{
-			this.camera = camera;
-			
+		public function VIdeoConnector(connectionListener:Function)
+		{	
 			connection = new NetConnection();
 			connection.client = this;
 			connection.addEventListener(NetStatusEvent.NET_STATUS, onNetStatus);
+			connection.addEventListener(NetStatusEvent.NET_STATUS, connectionListener);
 			connection.addEventListener(AsyncErrorEvent.ASYNC_ERROR, onAsyncError);
 			connection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
 			connection.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
+						
 			connection.connect(VIDEO_APP);
 		}
 		
 		private function onNetStatus(e:NetStatusEvent):void{
 			switch(e.info.code){
 				case CONNECT_SUCCESS:
-					connectVideo();
+					//connectVideo();
 					break;
 				case CONNECT_FAILED:
 					trace("VideoConnector::onNetStatus - connection to Video App failed");
@@ -52,6 +54,9 @@ package connectors
 					break;
 				case CONNECT_REJECTED:
 					trace("VideoConnector::onNetStatus - connection to Video App rejected");
+					break;
+				case NETSTREAM_PUBLISH:
+					
 					break;
 				default:
 					trace("VideoConnector::onNetStatus - something else happened: " + e.info.code);
@@ -71,9 +76,10 @@ package connectors
 			trace("VideoConnector::onIOError - an IO error occured on the video connection");
 		}
 		
-		private function connectVideo():void{
+		public function connectVideo(camera:Camera, streamListener:Function):void{
 			outgoingStream = new NetStream(connection);
 			outgoingStream.addEventListener(NetStatusEvent.NET_STATUS, onNetStatus);
+			outgoingStream.addEventListener(NetStatusEvent.NET_STATUS, streamListener);
 			
 			outgoingStream.attachCamera(camera);
 			outgoingStream.publish("testStream");
