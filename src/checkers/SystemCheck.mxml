@@ -9,6 +9,7 @@
 			import mx.core.Application;
 			import mx.managers.PopUpManager;
 			
+			import uihelpers.JavaOKEvent;
 			import uihelpers.UserAlert;
 			import uihelpers.WarningEvent;
 			
@@ -84,10 +85,15 @@
 				}
 				
 				if (!passedJava) showJavaError(highestJava, Requirements.java_required_version);
+				else sendJavaOK();
 			}
 			
 			private function checkBBBApps():void{
 				var appsConnector:AppsConnector = new AppsConnector();
+			}
+			
+			private function sendJavaOK():void{
+				dispatchEvent(new JavaOKEvent(JavaOKEvent.JAVA_A_OK));
 			}
 			
 			private function showJavaError(hasVersion:String, needsVersion:String):void{	

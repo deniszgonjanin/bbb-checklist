@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <requirements>
-	<bigbluebutton_apps url="rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/bigbluebutton">
+	<bigbluebutton_apps url="rtmp://191.168.0.191/bigbluebutton">
 		<join>
 			<fullname>Test User</fullname>
   			<confname>Dev Meeting</confname>
@@ -15,9 +15,9 @@
 		</join>
 	</bigbluebutton_apps>
 	
-	<bigbluebutton_voice url="rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/video" />
+	<bigbluebutton_voice url="rtmp://191.168.0.191/video" />
 	
-	<bigbluebutton_video url="rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/video" />
+	<bigbluebutton_video url="rtmp://191.168.0.191/video" />
 	
 	<java version="1.6.0_22" />
 	

@@ -15,6 +15,7 @@ package util
 		public static var bbb_apps_url:String;
 		public static var bbb_voice_url:String;
 		public static var bbb_video_url:String;
+		public static var bbb_deskshare_url:String;
 		public static var flash_required_version:String;
 		public static var java_required_version:String;
 		
@@ -56,6 +57,7 @@ package util
 			bbb_apps_url = xml.bigbluebutton_apps.@url;
 			bbb_video_url = xml.bigbluebutton_video.@url;
 			bbb_voice_url = xml.bigbluebutton_voice.@url;
+			bbb_deskshare_url = xml.bigbluebutton_deskshare.@url;
 			
 			flash_required_version = xml.flash.@version;
 			java_required_version = xml.java.@version;

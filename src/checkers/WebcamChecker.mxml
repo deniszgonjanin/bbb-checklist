@@ -22,7 +22,7 @@
 			[Bindable] private var camHeight:Number = 120;
 			private var quality:Number = 0;
 			
-			private var videoConnector:VideoConnector;
+			private var videoConnector:VideoConnector; 
 			private var ns:NetStream;
 						
 			public function init():void{

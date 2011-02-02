@@ -4,9 +4,12 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import uihelpers.JavaOKEvent;
 			import uihelpers.WarningEvent;
 			
 			import util.Requirements;
+			
+			private var isJavaOk:Boolean = false;
 			
 			private function loadConfig():void{
 				Requirements.loadRequirements(requirementsLoaded);
@@ -23,6 +26,7 @@
 				webcamCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
 				micCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
 				systemCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
+				systemCheck.addEventListener(JavaOKEvent.JAVA_A_OK, onJavaOKEvent);
 				
 				systemCheck.init();
 			}
@@ -31,9 +35,14 @@
 				warningsList.addWarning(e);
 			}
 			
+			private function onJavaOKEvent(e:JavaOKEvent):void{
+				isJavaOk = true;
+			}
+			
 			private function startTest():void{
 				webcamCheck.init();
 				micCheck.init();
+				deskshareCheck.startTheApplet();
 				
 				btnStart.enabled = false;
 			}
@@ -45,6 +54,7 @@
 		<checkers:MicChecker id="micCheck" />
 	</mx:VBox>
 	<checkers:SystemCheck id="systemCheck"  width="52" height="11" x="10" y="494"/>
+	<checkers:DeskShareChecker id="deskshareCheck" x="540" y="20" />
 	<uihelpers:WarningsList id="warningsList" x="10" y="201" width="300" height="195"/>
 	<mx:Text x="10" y="10" width="300"
 			 id="txtInstructions" height="108" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"

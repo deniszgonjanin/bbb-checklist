@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="180" height="300"
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="180" height="250"
 		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" 
 		 horizontalAlign="center" visible="false" >
 	<mx:Script>
