@@ -5,7 +5,12 @@
 			import connectors.AppsConnector;
 			
 			import util.JavaCheck;
+			import util.Requirements;
 			private function init():void{
+				var reqs:Requirements = new Requirements(requirementsLoaded);
+			}
+			
+			private function requirementsLoaded():void{
 				checkFlash();
 				checkOS();
 				checkJava();
