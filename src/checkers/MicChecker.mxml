@@ -22,6 +22,8 @@
 			private function initMic():void{
 				mic = Microphone.getMicrophone();
 				if (mic == null) return;
+				
+				sldVolume.value = mic.gain;
 			}
 			
 			private function updateMicLevel(e:TimerEvent):void{
@@ -33,10 +35,16 @@
 				mic = Microphone.getMicrophone(cmbMicSelector.selectedIndex);
 				if (mic == null) return;
 			}
+			
+			private function changeVolume():void{
+				mic.gain = sldVolume.value;
+			}
 		]]>
 	</mx:Script>
 	
 	<mx:ProgressBar id="micLevel" minimum="0" maximum="100" label="Microphone Activity" labelPlacement="top" 
 					direction="right" mode="manual" visible="true"/>
+	<mx:Label text="Adjust Volume" />
+	<mx:HSlider id="sldVolume" minimum="0" maximum="100" change="changeVolume()" />
 	<mx:ComboBox id="cmbMicSelector" dataProvider="{Microphone.names}" change="changeMic()" />
 </mx:VBox>
