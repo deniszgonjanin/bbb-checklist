@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import connectors.AudioConnector;
+			
+			import mx.controls.Alert;
+			private var timer:Timer;
+			private var mic:Microphone;
+			
+			private var audioConnector:AudioConnector;
+			
+			private function init():void{
+				initMic();
+				audioConnector = new AudioConnector(mic);
+				
+				timer = new Timer(100);
+				timer.addEventListener(TimerEvent.TIMER, updateMicLevel);
+				timer.start();
+			}
+			
+			private function initMic():void{
+				mic = Microphone.getMicrophone();
+				if (mic == null) return;
+			}
+			
+			private function updateMicLevel(e:TimerEvent):void{
+				//micLevel.setProgress(Math.round(Math.random() * 100), 100);
+				micLevel.setProgress(mic.activityLevel,100);
+			}
+			
+			private function changeMic():void{
+				mic = Microphone.getMicrophone(cmbMicSelector.selectedIndex);
+				if (mic == null) return;
+			}
+		]]>
+	</mx:Script>
 	
+	<mx:ProgressBar id="micLevel" minimum="0" maximum="100" label="Microphone Activity" labelPlacement="top" 
+					direction="right" mode="manual" visible="true"/>
+	<mx:ComboBox id="cmbMicSelector" dataProvider="{Microphone.names}" change="changeMic()" />
 </mx:VBox>

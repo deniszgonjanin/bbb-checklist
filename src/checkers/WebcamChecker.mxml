@@ -1,4 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="340" height="400" 
+		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
+		 creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			private var video:Video;
+			private var camera:Camera;
+			
+			[Bindable] private var camWidth:Number = 320;
+			[Bindable] private var camHeight:Number = 240;
+			
+			private var quality:Number = 0;
+			
+			private function init():void{
+				checkIfMacCamera();
+				checkIfGoogleTalkPluginInstalled();
+				
+				showCamera();
+			}
+			
+			private function checkIfMacCamera():void{
+				for (var i:int = 0; i<Camera.names.length; i++){
+					if (Camera.names[i] == "USB Video Class Video" || Camera.names[i] == "Built-in iSight") {
+						/**
+						 * Set as default for Macs
+						 */
+						cmbCameraSelector.selectedIndex = i;
+					}
+				}
+			}
+			
+			private function checkIfGoogleTalkPluginInstalled():void{
+				for (var i:int = 0; i<Camera.names.length; i++){
+					if (Camera.names[i] == "Google Camera Adapter 1" || Camera.names[i] == "Google Camera Adapter 0") {
+						/**
+						 * Google camera adapter interferes with normal functioning of the Webcams on Macs with certain Flash versions
+						 * Here we check whether these adapters are installed and tell people how to remove them
+						 * Go to /Library/Application Support/Google/ 
+						 * And you will see "GoogleVoiceAndVideoUninstaller.app". 
+						 * Close all active browsers and then double click on the app. 
+						 */
+						
+					}
+				}
+			}
+			
+			private function showCamera():void{
+				camera = Camera.getCamera(cmbCameraSelector.selectedIndex.toString());
+				if (camera == null) return;
+								
+				camera.setKeyFrameInterval(5);
+				camera.setMode(camWidth,camHeight,15);
+				camera.setQuality(0,quality);
+				
+				video = new Video(camWidth, camHeight);
+				//Next two lines may seem redundant but they're not. Do not delete.
+				video.width = camWidth;
+				video.height = camHeight;
+				video.attachCamera(camera);
+				videoHolder.addChild(video);
+
+			}
+
+		]]>
+	</mx:Script>
 	
+	<mx:UIComponent id="videoHolder" width="{camWidth}" height="{camHeight}" />
+	<mx:HBox horizontalAlign="center" verticalAlign="middle" width="100%">
+		<mx:ComboBox id="cmbCameraSelector" dataProvider="{Camera.names}" y="250" width="150" change="showCamera()"/>
+	</mx:HBox>
 </mx:VBox>
