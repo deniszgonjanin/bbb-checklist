@@ -4,7 +4,7 @@
 		 creationComplete="init()">
 	<mx:Script>
 		<![CDATA[
-			import connectors.VIdeoConnector;
+			import connectors.VideoConnector;
 			
 			private var video:Video;
 			private var camera:Camera;
@@ -13,11 +13,11 @@
 			[Bindable] private var camHeight:Number = 240;
 			private var quality:Number = 0;
 			
-			private var videoConnector:VIdeoConnector;
+			private var videoConnector:VideoConnector;
 			private var ns:NetStream;
 			
 			private function init():void{
-				this.videoConnector = new VIdeoConnector(onNetStatus);
+				this.videoConnector = new VideoConnector(onNetStatus);
 				
 				checkIfMacCamera();
 				checkIfGoogleTalkPluginInstalled();				
@@ -72,10 +72,10 @@
 			public function onNetStatus(e:NetStatusEvent):void{
 				trace("WebcamChecker::onNetStatus - " + e.info.code);
 				switch(e.info.code){
-					case VIdeoConnector.CONNECT_SUCCESS:
+					case VideoConnector.CONNECT_SUCCESS:
 						showCamera();
 						break;
-					case VIdeoConnector.NETSTREAM_PUBLISH:
+					case VideoConnector.NETSTREAM_PUBLISH:
 						startVideo();
 						break;
 					default:

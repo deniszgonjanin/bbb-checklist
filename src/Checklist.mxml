@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" minWidth="955" minHeight="600" xmlns:checkers="checkers.*">
 	<mx:HBox>
-		<checkers:WebcamChecker />
-		<checkers:MicChecker />
+		<checkers:WebcamChecker  height="300"/>
+		<checkers:MicChecker  width="250"/>
 	</mx:HBox>
+	<checkers:SystemCheck  x="10" y="308" width="589" height="195"/>
 </mx:Application>

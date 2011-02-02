@@ -9,7 +9,7 @@ package connectors
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 
-	public class VIdeoConnector
+	public class VideoConnector
 	{
 		public static const CONNECT_SUCCESS:String = "NetConnection.Connect.Success";
 		public static const CONNECT_FAILED:String = "NetConnection.Connect.Failed";
@@ -28,7 +28,7 @@ package connectors
 		private var camera:Camera;
 		private var streamListener:Function;
 		
-		public function VIdeoConnector(connectionListener:Function)
+		public function VideoConnector(connectionListener:Function)
 		{	
 			connection = new NetConnection();
 			connection.client = this;
