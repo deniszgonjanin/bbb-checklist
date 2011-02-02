@@ -15,11 +15,11 @@ Full List of Potential Problems Checked for
 5. Connects to the BigBlueButton server defined in requirements.xml and streams the audio back to the user so they can hear it.
 6. Issue with the Google Camera Adapter for Google Video and Voice: https://www.google.com/support/forum/p/chat/thread?tid=0fd25c866ecd895e&hl=en
 7. Mac OSX 10.6.5 and Flash issue with the iSight camera: http://reviews.cnet.com/8301-13727_7-20022842-263.html
+8. Start the Desktop Sharing applet to stream the desktop video to the server and see if it can receive a response.
 
 Problems Not Checked for Yet
 ===========================
 - Establish a successful connection to bbb-apps to make test remote procedure calls.
-- Start the Desktop Sharing applet to stream the desktop video to the server and see if it can receive a response.
 
 Other Problems?
 ==============
