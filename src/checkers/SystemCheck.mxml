@@ -5,6 +5,8 @@
 			import connectors.AppsConnector;
 			
 			import mx.controls.Alert;
+			import mx.core.Application;
+			import mx.managers.PopUpManager;
 			
 			import util.JavaCheck;
 			import util.Requirements;
@@ -31,9 +33,13 @@
 			}
 			
 			private function checkOS():void{
-				var os:String = Capabilities.os;
-				
-				trace("Operating System: " + os);
+				trace("Operating System: " + Capabilities.os);
+				var os:Array = Capabilities.os.split(" ");
+				//Check for this bug: http://reviews.cnet.com/8301-13727_7-20022842-263.html
+				//Fix is to download new flash player 10.2 or above
+				if (os[0] == "Mac" && os[1] == "OS" && os[2] == "10.6.6"){
+					showMacOS1065iSightError();
+				}
 			}
 			
 			private function checkJava():void{
@@ -86,6 +92,22 @@
 			
 			private function showFlashError(hasVersion:String, needsVersion:String):void{
 				Alert.show("FLASH ERROR: has " + hasVersion + " but needs: " + needsVersion);
+			}
+			
+			private function showMacOS1065iSightError():void{
+				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
+				userAlert.setAlert(iSightErrorOSX1065());
+				
+				userAlert.x = Application.application.width/2 - userAlert.width/2;
+				userAlert.y = Application.application.height/2 - userAlert.height/2;
+			}
+			
+			private static function iSightErrorOSX1065():String{
+				return "If you have problems with your iSight camera, it may be because you are running OS X 10.6.5, which is known" +
+						" to have a problem with Flash displaying the iSight camera. \n\n" + 
+						"To correct this, install a newer version of Flash"+
+						" from <a href='http://labs.adobe.com/downloads/flashplayer10.html'><font color='#0000ff'>Adobe</font></a>, " + 
+						" or update your Mac to the newest version";
 			}
 		]]>
 	</mx:Script>

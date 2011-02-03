@@ -17,19 +17,7 @@
 			
 			private var videoConnector:VideoConnector;
 			private var ns:NetStream;
-			
-			public static const GOOGLE_ADAPTER_ERROR:String = "It seems like you have Google Voice and Video plugin installed. " +
-				"This plugin interferes with normal functioning of the Webcams on Macs with certain Flash versions. \n\n" +
-				"To fix this problem: \n" +
-				"- If you are using Google Chrome, try using Safari instead. \n\n" +
-				"Or, you can uninstall the Google Voice and Video plugin. To do this: \n" +
-				"- Go to /Library/Application Support/Google/ \n" +
-				"- You will see 'GoogleVoiceAndVideoUninstaller.app'. \n" +
-				"- Close all browser windows and then open this app.";
-			
-			public static const CONNECTION_ERROR:String = "The connection failed while trying to check video connectivity with the " +
-				"server. Please contact your server administrator.";
-			
+						
 			public function init():void{
 				this.videoConnector = new VideoConnector(onNetStatus);
 				
@@ -117,7 +105,7 @@
 			
 			private function showGoogleAdapterError():void{
 				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(GOOGLE_ADAPTER_ERROR);
+				userAlert.setAlert(googleAdapterError());
 				
 				userAlert.x = Application.application.width/2 - userAlert.width/2;
 				userAlert.y = Application.application.height/2 - userAlert.height/2;
@@ -125,10 +113,26 @@
 			
 			private function showConnectionError():void{
 				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(GOOGLE_ADAPTER_ERROR);
+				userAlert.setAlert(connectionError());
 				
 				userAlert.x = Application.application.width/2 - userAlert.width/2;
 				userAlert.y = Application.application.height/2 - userAlert.height/2;
+			}
+			
+			private static function googleAdapterError():String{
+				return "It seems like you have Google Voice and Video plugin installed. " +
+						"This plugin interferes with normal functioning of the Webcams on Macs with certain Flash versions. \n\n" +
+						"To fix this problem: \n" +
+						"- If you are using Google Chrome, try using Safari instead. \n\n" +
+						"Or, you can uninstall the Google Voice and Video plugin. To do this: \n" +
+						"- Go to /Library/Application Support/Google/ \n" +
+						"- You will see 'GoogleVoiceAndVideoUninstaller.app'. \n" +
+						"- Close all browser windows and then open this app.";
+			}
+			
+			private static function connectionError():String{
+				return "The connection failed while trying to check video connectivity with the " +
+						"server. Please contact your server administrator.";
 			}
 
 		]]>

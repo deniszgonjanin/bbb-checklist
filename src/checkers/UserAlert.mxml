@@ -4,7 +4,7 @@
 		<![CDATA[
 			import mx.managers.PopUpManager;
 			public function setAlert(text:String):void{
-				txtAlert.text = text;
+				txtAlert.htmlText = text;
 			}
 			
 			public function closePopUp():void{
