@@ -4,6 +4,8 @@
 		<![CDATA[
 			import connectors.AppsConnector;
 			
+			import mx.controls.Alert;
+			
 			import util.JavaCheck;
 			import util.Requirements;
 			
@@ -21,25 +23,75 @@
 			
 			private function checkFlash():void{
 				var flashVersion:String = Capabilities.version;
-				txtOutput.text += "Flash Player version: " + flashVersion + " required is: " + reqs.flash_required_version + "\n";
+				
+				var flashVersions:Array = (Capabilities.version.split(" ")[1] as String).split(",");
+				var flashRequired:Array = reqs.flash_required_version.split(",");
+				
+				trace("version is: " + flashVersions);
+				trace("required is " + flashRequired);
+				
+				for (var i:Number = 0; i< flashRequired.length; i++){
+					if (Number(flashRequired[i]) > Number(flashVersions[i])) showFlashError(flashVersion, reqs.flash_required_version);
+				}
+				
 			}
 			
 			private function checkOS():void{
 				var os:String = Capabilities.os;
-				txtOutput.text += "Operating System: " + os + "\n";
+				
+				trace("Operating System: " + os);
 			}
 			
 			private function checkJava():void{
 				var javas:Array = JavaCheck.getJREs();
-				txtOutput.text += "Java versions installed: ";
+				
+				if (javas.length == 0) showFlashError("NO JAVA INSTALLED", reqs.java_required_version);
+				
+				trace("Java version required is: " + reqs.java_required_version);
+				trace("Java versions installed: ");
+				var highestJava:String = javas[0];
 				for each (var java:String in javas){
-					txtOutput.text += java;
+					trace("Found java " + java);
+					var highest:Array = highestJava.split(".");
+					var iter:Array = java.split(".");
+					
+					if (Number(iter[0]) > Number(highest[0])){
+						highestJava = java;
+					} else if (Number(iter[0]) == Number(highest[0]) && Number(iter[1]) > Number(highest[1])){
+						highestJava = java;
+					} else if (Number(iter[0]) == Number(highest[0]) && Number(iter[1]) == Number(highest[1])){
+						var iterMinor:Number = Number((iter[2] as String).split("_")[1]);
+						var highestMinor:Number = Number((highest[2] as String).split("_")[1]);
+						if (iterMinor > highestMinor) highestJava = java;
+					}
 				}
-				txtOutput.text += "version required is: " + reqs.java_required_version + "\n";
+				
+				var passedJava:Boolean = true;
+				var required:Array = reqs.java_required_version.split(".");
+				highest = highestJava.split(".");
+				if (Number(required[0]) > Number(highest[0])){
+					passedJava = false;
+				} else if (Number(required[0]) == Number(highest[0]) && Number(required[1]) > Number(highest[1])){
+					passedJava = false;
+				} else if (Number(required[0]) == Number(highest[0]) && Number(required[1]) == Number(highest[1])){
+					var requiredMinor:Number = Number((required[2] as String).split("_")[1]);
+					var highestJavaMinor:Number = Number((highest[2] as String).split("_")[1]);
+					if (requiredMinor > highestJavaMinor) passedJava = false;
+				}
+				
+				if (!passedJava) showJavaError(highestJava, reqs.java_required_version);
 			}
 			
 			private function checkBBBApps():void{
 				var appsConnector:AppsConnector = new AppsConnector();
+			}
+			
+			private function showJavaError(hasVersion:String, needsVersion:String):void{
+				Alert.show("JAVA ERROR: has " + hasVersion + " but needs: " + needsVersion);
+			}
+			
+			private function showFlashError(hasVersion:String, needsVersion:String):void{
+				Alert.show("FLASH ERROR: has " + hasVersion + " but needs: " + needsVersion);
 			}
 		]]>
 	</mx:Script>
