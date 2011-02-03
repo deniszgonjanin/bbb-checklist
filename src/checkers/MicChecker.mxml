@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="340" height="300" creationComplete="init()"
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="340" height="300"
 		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" >
 	<mx:Script>
 		<![CDATA[
@@ -10,7 +10,7 @@
 			
 			private var audioConnector:AudioConnector;
 			
-			private function init():void{
+			public function init():void{
 				initMic();
 				audioConnector = new AudioConnector(mic);
 				

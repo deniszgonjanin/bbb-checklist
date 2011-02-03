@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" creationComplete="init()">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" >
 	<mx:Script>
 		<![CDATA[
 			import connectors.AppsConnector;
@@ -8,14 +8,8 @@
 			
 			import util.JavaCheck;
 			import util.Requirements;
-			
-			private var reqs:Requirements;
-			
-			private function init():void{
-				reqs = new Requirements(requirementsLoaded);
-			}
-			
-			private function requirementsLoaded():void{
+						
+			public function init():void{
 				checkFlash();
 				checkOS();
 				checkJava();
@@ -25,13 +19,13 @@
 				var flashVersion:String = Capabilities.version;
 				
 				var flashVersions:Array = (Capabilities.version.split(" ")[1] as String).split(",");
-				var flashRequired:Array = reqs.flash_required_version.split(",");
+				var flashRequired:Array = Requirements.flash_required_version.split(",");
 				
 				trace("version is: " + flashVersions);
 				trace("required is " + flashRequired);
 				
 				for (var i:Number = 0; i< flashRequired.length; i++){
-					if (Number(flashRequired[i]) > Number(flashVersions[i])) showFlashError(flashVersion, reqs.flash_required_version);
+					if (Number(flashRequired[i]) > Number(flashVersions[i])) showFlashError(flashVersion, Requirements.flash_required_version);
 				}
 				
 			}
@@ -45,9 +39,9 @@
 			private function checkJava():void{
 				var javas:Array = JavaCheck.getJREs();
 				
-				if (javas.length == 0) showFlashError("NO JAVA INSTALLED", reqs.java_required_version);
+				if (javas.length == 0) showFlashError("NO JAVA INSTALLED", Requirements.java_required_version);
 				
-				trace("Java version required is: " + reqs.java_required_version);
+				trace("Java version required is: " + Requirements.java_required_version);
 				trace("Java versions installed: ");
 				var highestJava:String = javas[0];
 				for each (var java:String in javas){
@@ -67,7 +61,7 @@
 				}
 				
 				var passedJava:Boolean = true;
-				var required:Array = reqs.java_required_version.split(".");
+				var required:Array = Requirements.java_required_version.split(".");
 				highest = highestJava.split(".");
 				if (Number(required[0]) > Number(highest[0])){
 					passedJava = false;
@@ -79,7 +73,7 @@
 					if (requiredMinor > highestJavaMinor) passedJava = false;
 				}
 				
-				if (!passedJava) showJavaError(highestJava, reqs.java_required_version);
+				if (!passedJava) showJavaError(highestJava, Requirements.java_required_version);
 			}
 			
 			private function checkBBBApps():void{

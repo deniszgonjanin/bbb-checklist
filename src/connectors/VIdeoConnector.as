@@ -8,6 +8,8 @@ package connectors
 	import flash.media.Video;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
+	
+	import util.Requirements;
 
 	public class VideoConnector
 	{
@@ -18,9 +20,7 @@ package connectors
 		public static const APP_SHUTDOWN:String = "NetConnection.Connect.AppShutDown";
 		public static const CONNECT_REJECTED:String = "NetConnection.Connect.Rejected";
 		public static const NETSTREAM_PUBLISH:String = "NetStream.Publish.Start";
-		
-		public static const VIDEO_APP:String = "rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/video";
-		
+				
 		public var connection:NetConnection;
 		private var outgoingStream:NetStream;
 		private var incomingStream:NetStream;
@@ -37,8 +37,12 @@ package connectors
 			connection.addEventListener(AsyncErrorEvent.ASYNC_ERROR, onAsyncError);
 			connection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
 			connection.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
-						
-			connection.connect(VIDEO_APP);
+			
+			Requirements.loadRequirements(connectToServer);
+		}
+		
+		public function connectToServer():void{
+			connection.connect(Requirements.bbb_video_url);
 		}
 		
 		private function onNetStatus(e:NetStatusEvent):void{

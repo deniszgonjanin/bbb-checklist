@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="340" height="300" 
-		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
-		 creationComplete="init()">
+		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" >
 	<mx:Script>
 		<![CDATA[
 			import connectors.VideoConnector;
+			
+			import mx.core.Application;
+			import mx.managers.PopUpManager;
 			
 			private var video:Video;
 			private var camera:Camera;
@@ -16,7 +18,19 @@
 			private var videoConnector:VideoConnector;
 			private var ns:NetStream;
 			
-			private function init():void{
+			public static const GOOGLE_ADAPTER_ERROR:String = "It seems like you have Google Voice and Video plugin installed. " +
+				"This plugin interferes with normal functioning of the Webcams on Macs with certain Flash versions. \n\n" +
+				"To fix this problem: \n" +
+				"- If you are using Google Chrome, try using Safari instead. \n\n" +
+				"Or, you can uninstall the Google Voice and Video plugin. To do this: \n" +
+				"- Go to /Library/Application Support/Google/ \n" +
+				"- You will see 'GoogleVoiceAndVideoUninstaller.app'. \n" +
+				"- Close all browser windows and then open this app.";
+			
+			public static const CONNECTION_ERROR:String = "The connection failed while trying to check video connectivity with the " +
+				"server. Please contact your server administrator.";
+			
+			public function init():void{
 				this.videoConnector = new VideoConnector(onNetStatus);
 				
 				checkIfMacCamera();
@@ -37,14 +51,8 @@
 			private function checkIfGoogleTalkPluginInstalled():void{
 				for (var i:int = 0; i<Camera.names.length; i++){
 					if (Camera.names[i] == "Google Camera Adapter 1" || Camera.names[i] == "Google Camera Adapter 0") {
-						/**
-						 * Google camera adapter interferes with normal functioning of the Webcams on Macs with certain Flash versions
-						 * Here we check whether these adapters are installed and tell people how to remove them
-						 * Go to /Library/Application Support/Google/ 
-						 * And you will see "GoogleVoiceAndVideoUninstaller.app". 
-						 * Close all active browsers and then double click on the app. 
-						 */
-						
+						showGoogleAdapterError();
+						break;
 					}
 				}
 			}
@@ -78,6 +86,15 @@
 					case VideoConnector.NETSTREAM_PUBLISH:
 						startVideo();
 						break;
+					case VideoConnector.CONNECT_FAILED:
+						showConnectionError();
+						break;
+					case VideoConnector.CONNECT_REJECTED:
+						showConnectionError();
+						break;
+					case VideoConnector.CONNECT_CLOSED:
+						showConnectionError();
+						break
 					default:
 						break;
 				}
@@ -96,6 +113,22 @@
 				video.attachNetStream(ns);
 				videoHolder.addChild(video);
 				ns.play("testStream");	
+			}
+			
+			private function showGoogleAdapterError():void{
+				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
+				userAlert.setAlert(GOOGLE_ADAPTER_ERROR);
+				
+				userAlert.x = Application.application.width/2 - userAlert.width/2;
+				userAlert.y = Application.application.height/2 - userAlert.height/2;
+			}
+			
+			private function showConnectionError():void{
+				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
+				userAlert.setAlert(GOOGLE_ADAPTER_ERROR);
+				
+				userAlert.x = Application.application.width/2 - userAlert.width/2;
+				userAlert.y = Application.application.height/2 - userAlert.height/2;
 			}
 
 		]]>

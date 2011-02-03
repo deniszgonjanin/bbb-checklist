@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" minWidth="955" minHeight="600" xmlns:checkers="checkers.*">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" minWidth="955" minHeight="600" xmlns:checkers="checkers.*"
+				preinitialize="loadConfig()">
+	
+	<mx:Script>
+		<![CDATA[
+			import util.Requirements;
+			private function loadConfig():void{
+				Requirements.loadRequirements(requirementsLoaded);
+			}
+			
+			private function requirementsLoaded():void{
+				webcamCheck.init();
+				micCheck.init();
+				systemCheck.init();
+			}
+		]]>
+	</mx:Script>
 	<mx:VBox>
-		<checkers:WebcamChecker />
-		<checkers:MicChecker />
+		<checkers:WebcamChecker id="webcamCheck" />
+		<checkers:MicChecker id="micCheck" />
 	</mx:VBox>
-	<checkers:SystemCheck  x="348" y="10" width="589" height="195"/>
+	<checkers:SystemCheck id="systemCheck"  x="348" y="10" width="589" height="195"/>
 </mx:Application>

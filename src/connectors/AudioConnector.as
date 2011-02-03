@@ -11,6 +11,8 @@ package connectors
 	
 	import mx.controls.Alert;
 	
+	import util.Requirements;
+	
 	public class AudioConnector
 	{
 		public static const CONNECT_SUCCESS:String = "NetConnection.Connect.Success";
@@ -19,9 +21,7 @@ package connectors
 		public static const INVALID_APP:String = "NetConnection.Connect.InvalidApp";
 		public static const APP_SHUTDOWN:String = "NetConnection.Connect.AppShutDown";
 		public static const CONNECT_REJECTED:String = "NetConnection.Connect.Rejected";
-		
-		public static const AUDIO_APP:String = "rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/video";
-		
+				
 		private var audioCodec:String = "SPEEX";
 		
 		private var connection:NetConnection;
@@ -40,7 +40,7 @@ package connectors
 			connection.addEventListener(AsyncErrorEvent.ASYNC_ERROR, onAsyncError);
 			connection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
 			connection.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
-			connection.connect(AUDIO_APP);
+			connection.connect(Requirements.bbb_voice_url);
 		}
 		
 		private function onNetStatus(e:NetStatusEvent):void{
