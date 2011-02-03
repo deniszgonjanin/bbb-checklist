@@ -4,7 +4,6 @@
 		<![CDATA[
 			import connectors.AppsConnector;
 			
-			import mx.controls.Alert;
 			import mx.core.Application;
 			import mx.managers.PopUpManager;
 			
@@ -37,7 +36,7 @@
 				var os:Array = Capabilities.os.split(" ");
 				//Check for this bug: http://reviews.cnet.com/8301-13727_7-20022842-263.html
 				//Fix is to download new flash player 10.2 or above
-				if (os[0] == "Mac" && os[1] == "OS" && os[2] == "10.6.6"){
+				if (os[0] == "Mac" && os[1] == "OS" && os[2] == "10.6.5"){
 					showMacOS1065iSightError();
 				}
 			}
@@ -86,12 +85,20 @@
 				var appsConnector:AppsConnector = new AppsConnector();
 			}
 			
-			private function showJavaError(hasVersion:String, needsVersion:String):void{
-				Alert.show("JAVA ERROR: has " + hasVersion + " but needs: " + needsVersion);
+			private function showJavaError(hasVersion:String, needsVersion:String):void{				
+				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
+				userAlert.setAlert(javaError(hasVersion, needsVersion));
+				
+				userAlert.x = Application.application.width/2 - userAlert.width/2;
+				userAlert.y = Application.application.height/2 - userAlert.height/2;
 			}
 			
 			private function showFlashError(hasVersion:String, needsVersion:String):void{
-				Alert.show("FLASH ERROR: has " + hasVersion + " but needs: " + needsVersion);
+				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
+				userAlert.setAlert(flashError(hasVersion, needsVersion));
+				
+				userAlert.x = Application.application.width/2 - userAlert.width/2;
+				userAlert.y = Application.application.height/2 - userAlert.height/2;
 			}
 			
 			private function showMacOS1065iSightError():void{
@@ -108,6 +115,18 @@
 						"To correct this, install a newer version of Flash"+
 						" from <a href='http://labs.adobe.com/downloads/flashplayer10.html'><font color='#0000ff'>Adobe</font></a>, " + 
 						" or update your Mac to the newest version";
+			}
+			
+			private static function javaError(hasVersion:String, needsVersion:String):String{
+				return "You have Java " + hasVersion + " installed, but you need at least version " + needsVersion +
+						" to use the BigBlueButton desktop sharing feature. Click on the button bellow to install the newest" +
+						" Java JRE version.";
+			}
+			
+			private static function flashError(hasVersion:String, needsVersion:String):String{
+				return "You have Flash " + hasVersion + " installed, but you need at least version " + needsVersion +
+						" to run BigBlueButton properly. Click on the button bellow to install the newest" +
+						" Adobe Flash version.";
 			}
 		]]>
 	</mx:Script>

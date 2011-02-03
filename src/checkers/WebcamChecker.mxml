@@ -8,6 +8,8 @@
 			import mx.core.Application;
 			import mx.managers.PopUpManager;
 			
+			import util.Requirements;
+			
 			private var video:Video;
 			private var camera:Camera;
 			
@@ -78,7 +80,7 @@
 						showConnectionError();
 						break;
 					case VideoConnector.CONNECT_REJECTED:
-						showConnectionError();
+						//showConnectionError();
 						break;
 					case VideoConnector.CONNECT_CLOSED:
 						showConnectionError();
@@ -113,7 +115,7 @@
 			
 			private function showConnectionError():void{
 				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(connectionError());
+				userAlert.setAlert(connectionError(Requirements.bbb_video_url));
 				
 				userAlert.x = Application.application.width/2 - userAlert.width/2;
 				userAlert.y = Application.application.height/2 - userAlert.height/2;
@@ -130,9 +132,9 @@
 						"- Close all browser windows and then open this app.";
 			}
 			
-			private static function connectionError():String{
+			private static function connectionError(serverUrl:String):String{
 				return "The connection failed while trying to check video connectivity with the " +
-						"server. Please contact your server administrator.";
+						"server at " + serverUrl + ". Please contact your server administrator.";
 			}
 
 		]]>
