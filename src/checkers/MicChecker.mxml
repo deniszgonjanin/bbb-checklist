@@ -31,7 +31,7 @@
 			}
 			
 			public function saveCurrentMic():void{
-				PersistUserPreferences.storeData("microphone", cmbMicSelector.selectedIndex.toString());
+				PersistUserPreferences.saveMicrophonePreference(cmbMicSelector.selectedIndex.toString());
 			}
 			
 			private function updateMicLevel(e:TimerEvent):void{
@@ -47,6 +47,7 @@
 			
 			private function changeVolume():void{
 				mic.gain = sldVolume.value;
+				PersistUserPreferences.saveMicrophoneGain(mic.gain);
 			}
 		]]>
 	</mx:Script>

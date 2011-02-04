@@ -32,5 +32,16 @@ package util
 				trace("Could not flush shared object");
 			}
 		}
+		
+		public static function saveMicrophoneGain(gain:Number):void{
+			if (gain > 100 || gain < 0) return;
+			
+			sharedObject.data.gain = gain;
+			try{
+				sharedObject.flush(1000);
+			} catch(err:Error){
+				trace("Could not flush shared object");
+			}
+		}
 	}
 }
