@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="bbb-checklist" basedir="." default="clean-build-all" >
+	<property environment="env" />
+    	<property name="BUILD_ENV" value="DEV" />
+    	<property name="FLEX_HOME" value="${env.FLEX_HOME}" />
+    	<property name="LOCALE_DIR" value="${FLEX_HOME}/frameworks/locale"/>
+    	<property name="BASE_DIR" value="${basedir}" />
+	<property name="SRC_DIR" value="${BASE_DIR}/src" />
+	<property name="OUTPUT_DIR" value="${BASE_DIR}/bin" />
+	<property name="BBB_MAIN" value="BigBlueButtonChecklist" />
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+
+	<target name="clean-build-all" depends="init-ant-contrib, generate-html-wrapper, compile-bbb-checklist" 
+			description="Build bbb-checklist"/>
+
+	<target name="init-ant-contrib">
+		<property name="ant-contrib.jar" location="${BASE_DIR}/build/lib/ant-contrib-0.6.jar"/>
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="${ant-contrib.jar}"/>
+	</target>
+
+	<target name="generate-html-wrapper">
+		<html-wrapper
+			title="BigBlueButton Checklist"
+			file="BigBlueButtonChecklist.html"
+			height="100%"
+			width="100%"
+			bgcolor="grey"
+			application="BigBlueButtonChecklist"
+			swf="BigBlueButtonChecklist"
+			version-major="10"
+			version-minor="0"
+			version-revision="0"
+			history="true"
+			template="express-installation"
+			output="${OUTPUT_DIR}"
+		/>
+	</target>
+
+	<target name="compile-bbb-checklist" description="Compile BigBlueButton Main">
+		<build-main src="${SRC_DIR}" target="${BBB_MAIN}" />
+		
+		<copy todir="${OUTPUT_DIR}/resources" >
+			<fileset dir="${BASE_DIR}/src/resources/" />
+		</copy>		
+	</target>
+
+	<macrodef name="build-main">
+		<attribute name="target"  />
+		<attribute name="flex" default="${FLEX_HOME}" description="Location of the Flex install." />
+		<attribute name="app" default="."/>
+		<attribute name="src" default="${SRC_DIR}" description="Path to the app to compile" />
+		<sequential>
+			<mxmlc file="@{src}/@{target}.mxml" output="${OUTPUT_DIR}/@{target}.swf" debug="false" optimize="true" link-report="linker-report.xml">
+				<target-player>10.0.0</target-player>
+				<load-config filename="@{flex}/frameworks/flex-config.xml" />
+				<source-path path-element="@{flex}/frameworks" />
+				<compiler.library-path dir="@{flex}/frameworks" append="true">
+					<include name="libs" />
+				</compiler.library-path>
+
+				<compiler.library-path dir="@{app}" append="true">
+					<include name="libs" />
+					<include name="libs/generated" />
+				</compiler.library-path>
+
+				<default-size width="500" height="600" />
+			</mxmlc>
+		</sequential>
+	</macrodef>
+</project>
