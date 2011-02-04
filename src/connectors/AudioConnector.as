@@ -28,6 +28,8 @@ package connectors
 		private var outgoingStream:NetStream;
 		private var incomingStream:NetStream;
 		
+		private var streamName:String;
+		
 		private var mic:Microphone;
 		
 		public function AudioConnector(mic:Microphone)
@@ -79,9 +81,11 @@ package connectors
 			outgoingStream = new NetStream(connection);
 			outgoingStream.addEventListener(NetStatusEvent.NET_STATUS, onNetStatus);
 			
+			streamName = Math.random().toString();
+			
 			setupMicrophone();
 			outgoingStream.attachAudio(mic);
-			outgoingStream.publish("echoStream", "live");
+			outgoingStream.publish(streamName, "live");
 		}
 		
 		public function changeMic(mic:Microphone):void{

@@ -113,7 +113,7 @@
 				video.height = camHeight;
 				video.attachNetStream(ns);
 				videoHolder.addChild(video);
-				ns.play("testStream");	
+				ns.play(videoConnector.streamName);	
 			}
 			
 			private function showGoogleAdapterError():void{

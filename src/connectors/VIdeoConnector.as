@@ -28,6 +28,8 @@ package connectors
 		private var camera:Camera;
 		private var streamListener:Function;
 		
+		public var streamName:String;
+		
 		public function VideoConnector(connectionListener:Function)
 		{	
 			connection = new NetConnection();
@@ -85,8 +87,10 @@ package connectors
 			outgoingStream.addEventListener(NetStatusEvent.NET_STATUS, onNetStatus);
 			outgoingStream.addEventListener(NetStatusEvent.NET_STATUS, streamListener);
 			
+			streamName = Math.random().toString();
+			
 			outgoingStream.attachCamera(camera);
-			outgoingStream.publish("testStream");
+			outgoingStream.publish(streamName);
 		}
 		
 		public function changeCamera(camera:Camera):void{
