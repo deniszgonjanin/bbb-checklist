@@ -5,6 +5,8 @@
 		<![CDATA[
 			import connectors.AudioConnector;
 			
+			import util.PersistUserPreferences;
+			
 			private var timer:Timer;
 			private var mic:Microphone;
 			
@@ -24,6 +26,10 @@
 				if (mic == null) return;
 				
 				sldVolume.value = mic.gain;
+			}
+			
+			public function saveCurrentMic():void{
+				PersistUserPreferences.storeData("microphone", cmbMicSelector.selectedIndex.toString());
 			}
 			
 			private function updateMicLevel(e:TimerEvent):void{

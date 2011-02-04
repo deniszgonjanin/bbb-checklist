@@ -24,12 +24,18 @@
 			private function onWarningEvent(e:WarningEvent):void{
 				warningsList.addWarning(e);
 			}
+			
+			private function saveSettings():void{
+				webcamCheck.saveCurrentWebcam();
+				micCheck.saveCurrentMic();
+			}
 		]]>
 	</mx:Script>
 	<mx:VBox>
 		<checkers:WebcamChecker id="webcamCheck" />
-		<checkers:MicChecker id="micCheck" />
+		<checkers:MicChecker id="micCheck"  height="150"/>
 	</mx:VBox>
 	<checkers:SystemCheck id="systemCheck"  width="52" height="87" x="348" y="213"/>
 	<uihelpers:WarningsList id="warningsList" x="348" y="10" width="589" height="195"/>
+	<mx:Button x="10" y="464" label="Use these as my default camera and microphone" width="320" click="saveSettings()"/>
 </mx:Application>

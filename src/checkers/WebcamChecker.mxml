@@ -11,6 +11,7 @@
 			import uihelpers.UserAlert;
 			import uihelpers.WarningEvent;
 			
+			import util.PersistUserPreferences;
 			import util.Requirements;
 			
 			private var video:Video;
@@ -28,6 +29,10 @@
 				
 				checkIfMacCamera();
 				checkIfGoogleTalkPluginInstalled();				
+			}
+			
+			public function saveCurrentWebcam():void{
+				PersistUserPreferences.saveWebcamPreference(cmbCameraSelector.selectedIndex.toString());
 			}
 			
 			private function checkIfMacCamera():void{
