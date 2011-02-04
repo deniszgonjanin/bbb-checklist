@@ -4,8 +4,13 @@
 		<![CDATA[
 			import connectors.AppsConnector;
 			
+			import flash.net.navigateToURL;
+			
 			import mx.core.Application;
 			import mx.managers.PopUpManager;
+			
+			import uihelpers.UserAlert;
+			import uihelpers.WarningEvent;
 			
 			import util.JavaCheck;
 			import util.Requirements;
@@ -85,35 +90,49 @@
 				var appsConnector:AppsConnector = new AppsConnector();
 			}
 			
-			private function showJavaError(hasVersion:String, needsVersion:String):void{				
-				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(javaError(hasVersion, needsVersion));
-				
-				userAlert.x = Application.application.width/2 - userAlert.width/2;
-				userAlert.y = Application.application.height/2 - userAlert.height/2;
+			private function showJavaError(hasVersion:String, needsVersion:String):void{	
+				var e:WarningEvent = new WarningEvent(WarningEvent.WARNING_EVENT);
+				e.warningLabel = "Java version error";
+				e.warningText = javaError(hasVersion, needsVersion);
+				e.optionalCommandText = "Install newest Java";
+				e.optionalCallbackFunction = installNewestJava;
+				dispatchEvent(e);
+			}
+			
+			private function installNewestJava():void{
+				JavaCheck.installLatestJRE();
 			}
 			
 			private function showFlashError(hasVersion:String, needsVersion:String):void{
-				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(flashError(hasVersion, needsVersion));
-				
-				userAlert.x = Application.application.width/2 - userAlert.width/2;
-				userAlert.y = Application.application.height/2 - userAlert.height/2;
+				var e:WarningEvent = new WarningEvent(WarningEvent.WARNING_EVENT);
+				e.warningLabel = "Flash version error";
+				e.warningText = flashError(hasVersion, needsVersion);
+				e.optionalCommandText = "Install newest Flash";
+				e.optionalCallbackFunction = installNewestFlash;
+				dispatchEvent(e);
+			}
+			
+			private function installNewestFlash():void{
+				navigateToURL(new URLRequest("http://get.adobe.com/flashplayer/"), "_self");
 			}
 			
 			private function showMacOS1065iSightError():void{
-				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(iSightErrorOSX1065());
-				
-				userAlert.x = Application.application.width/2 - userAlert.width/2;
-				userAlert.y = Application.application.height/2 - userAlert.height/2;
+				var e:WarningEvent = new WarningEvent(WarningEvent.WARNING_EVENT);
+				e.warningLabel = "iSight camera error";
+				e.warningText = iSightErrorOSX1065();
+				e.optionalCommandText = "Install Flash 10.2 RC2";
+				e.optionalCallbackFunction = installFlash102RC2;
+				dispatchEvent(e);
+			}
+			
+			private function installFlash102RC2():void{
+				navigateToURL(new URLRequest("http://labs.adobe.com/downloads/flashplayer10.html"), "_self");
 			}
 			
 			private static function iSightErrorOSX1065():String{
 				return "If you have problems with your iSight camera, it may be because you are running OS X 10.6.5, which is known" +
-						" to have a problem with Flash displaying the iSight camera. \n\n" + 
-						"To correct this, install a newer version of Flash"+
-						" from <a href='http://labs.adobe.com/downloads/flashplayer10.html'><font color='#0000ff'>Adobe</font></a>, " + 
+						" to have a problem with Flash capturing video from the iSight camera. \n" + 
+						"To correct this, click on the link bellow to install a newer version of Flash player,"+
 						" or update your Mac to the newest version";
 			}
 			
@@ -130,7 +149,5 @@
 			}
 		]]>
 	</mx:Script>
-	
-	<mx:Text id="txtOutput" width="100%" height="100%" text="" selectable="false"/>
-	
+		
 </mx:VBox>

@@ -19,7 +19,7 @@
 	
 	<bigbluebutton_video url="rtmp://ec2-184-73-150-80.compute-1.amazonaws.com/video" />
 	
-	<java version="1.7.0_22" />
+	<java version="1.6.0_22" />
 	
 	<flash version="10,0,0" />
 </requirements>

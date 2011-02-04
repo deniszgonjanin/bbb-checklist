@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300"
+		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+	<mx:Script>
+		<![CDATA[
+			
+			public function addWarning(e:WarningEvent):void{
+				var warningItem:WarningItem = new WarningItem();
+				this.addChild(warningItem);
+				warningItem.setWarning(e);
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Label text="Possible Issues" />
+</mx:VBox>

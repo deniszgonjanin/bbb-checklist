@@ -8,6 +8,9 @@
 			import mx.core.Application;
 			import mx.managers.PopUpManager;
 			
+			import uihelpers.UserAlert;
+			import uihelpers.WarningEvent;
+			
 			import util.Requirements;
 			
 			private var video:Video;
@@ -106,19 +109,17 @@
 			}
 			
 			private function showGoogleAdapterError():void{
-				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(googleAdapterError());
-				
-				userAlert.x = Application.application.width/2 - userAlert.width/2;
-				userAlert.y = Application.application.height/2 - userAlert.height/2;
+				var e:WarningEvent = new WarningEvent(WarningEvent.WARNING_EVENT);
+				e.warningLabel = "Google Camera Adapter Error";
+				e.warningText = googleAdapterError();
+				dispatchEvent(e);
 			}
 			
 			private function showConnectionError():void{
-				var userAlert:UserAlert = UserAlert(PopUpManager.createPopUp(this.parent, UserAlert, true));
-				userAlert.setAlert(connectionError(Requirements.bbb_video_url));
-				
-				userAlert.x = Application.application.width/2 - userAlert.width/2;
-				userAlert.y = Application.application.height/2 - userAlert.height/2;
+				var e:WarningEvent = new WarningEvent(WarningEvent.WARNING_EVENT);
+				e.warningLabel = "Connection Error";
+				e.warningText = connectionError(Requirements.bbb_video_url);
+				dispatchEvent(e);
 			}
 			
 			private static function googleAdapterError():String{

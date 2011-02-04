@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" minWidth="955" minHeight="600" xmlns:checkers="checkers.*"
-				preinitialize="loadConfig()">
+				preinitialize="loadConfig()" xmlns:uihelpers="uihelpers.*">
 	
 	<mx:Script>
 		<![CDATA[
+			import uihelpers.WarningEvent;
+			
 			import util.Requirements;
 			private function loadConfig():void{
 				Requirements.loadRequirements(requirementsLoaded);
 			}
 			
 			private function requirementsLoaded():void{
+				webcamCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
+				micCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
+				systemCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
+				
 				webcamCheck.init();
 				micCheck.init();
 				systemCheck.init();
+			}
+			
+			private function onWarningEvent(e:WarningEvent):void{
+				warningsList.addWarning(e);
 			}
 		]]>
 	</mx:Script>
@@ -20,5 +30,6 @@
 		<checkers:WebcamChecker id="webcamCheck" />
 		<checkers:MicChecker id="micCheck" />
 	</mx:VBox>
-	<checkers:SystemCheck id="systemCheck"  x="348" y="10" width="589" height="195"/>
+	<checkers:SystemCheck id="systemCheck"  width="52" height="87" x="348" y="213"/>
+	<uihelpers:WarningsList id="warningsList" x="348" y="10" width="589" height="195"/>
 </mx:Application>
