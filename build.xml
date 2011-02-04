@@ -3,7 +3,6 @@
 	<property environment="env" />
     	<property name="BUILD_ENV" value="DEV" />
     	<property name="FLEX_HOME" value="${env.FLEX_HOME}" />
-    	<property name="LOCALE_DIR" value="${FLEX_HOME}/frameworks/locale"/>
     	<property name="BASE_DIR" value="${basedir}" />
 	<property name="SRC_DIR" value="${BASE_DIR}/src" />
 	<property name="OUTPUT_DIR" value="${BASE_DIR}/bin" />
@@ -42,6 +41,9 @@
 		<copy todir="${OUTPUT_DIR}/resources" >
 			<fileset dir="${BASE_DIR}/src/resources/" />
 		</copy>		
+
+		<copy file="${BASE_DIR}/resources/BigBlueButtonChecklist.html" todir="${OUTPUT_DIR}" overwrite="true"/>
+                <copy file="${BASE_DIR}/resources/deployJava.js" todir="${OUTPUT_DIR}/resources" overwrite="true"/> 
 	</target>
 
 	<macrodef name="build-main">
