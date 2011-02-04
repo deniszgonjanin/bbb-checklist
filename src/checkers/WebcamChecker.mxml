@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="340" height="300" 
-		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" >
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="180" height="180" 
+		 paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
+		 visible="false">
 	<mx:Script>
 		<![CDATA[
 			import connectors.VideoConnector;
@@ -17,14 +18,15 @@
 			private var video:Video;
 			private var camera:Camera;
 			
-			[Bindable] private var camWidth:Number = 320;
-			[Bindable] private var camHeight:Number = 240;
+			[Bindable] private var camWidth:Number = 160;
+			[Bindable] private var camHeight:Number = 120;
 			private var quality:Number = 0;
 			
 			private var videoConnector:VideoConnector;
 			private var ns:NetStream;
 						
 			public function init():void{
+				this.visible = true;
 				this.videoConnector = new VideoConnector(onNetStatus);
 				
 				checkIfMacCamera();
@@ -72,6 +74,7 @@
 				videoHolder.addChild(video);*/
 				
 				videoConnector.connectVideo(camera, onNetStatus);
+				saveCurrentWebcam();
 
 			}
 			
