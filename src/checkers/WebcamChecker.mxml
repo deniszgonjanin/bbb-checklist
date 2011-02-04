@@ -134,7 +134,7 @@
 				return "It seems like you have Google Voice and Video plugin installed. " +
 						"This plugin interferes with normal functioning of the Webcams on Macs with certain Flash versions. \n\n" +
 						"To fix this problem: \n" +
-						"- If you are using Google Chrome, try using Safari instead. \n\n" +
+						"- If you are using Google Chrome, try using Safari instead. \n" +
 						"Or, you can uninstall the Google Voice and Video plugin. To do this: \n" +
 						"- Go to /Library/Application Support/Google/ \n" +
 						"- You will see 'GoogleVoiceAndVideoUninstaller.app'. \n" +
@@ -151,6 +151,7 @@
 	
 	<mx:UIComponent id="videoHolder" width="{camWidth}" height="{camHeight}" />
 	<mx:HBox horizontalAlign="center" verticalAlign="middle" width="100%">
-		<mx:ComboBox id="cmbCameraSelector" dataProvider="{Camera.names}" y="250" width="150" change="showCamera()"/>
+		<mx:ComboBox id="cmbCameraSelector" dataProvider="{Camera.names}" y="250" width="150" 
+					 change="showCamera()" textAlign="left"/>
 	</mx:HBox>
 </mx:VBox>

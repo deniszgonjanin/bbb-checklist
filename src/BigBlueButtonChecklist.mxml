@@ -23,6 +23,8 @@
 				webcamCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
 				micCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
 				systemCheck.addEventListener(WarningEvent.WARNING_EVENT, onWarningEvent);
+				
+				systemCheck.init();
 			}
 			
 			private function onWarningEvent(e:WarningEvent):void{
@@ -32,7 +34,8 @@
 			private function startTest():void{
 				webcamCheck.init();
 				micCheck.init();
-				systemCheck.init();
+				
+				btnStart.enabled = false;
 			}
 			
 		]]>
@@ -46,5 +49,5 @@
 	<mx:Text x="10" y="10" width="300"
 			 id="txtInstructions" height="108" paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"
 			 selectable="false"/>
-	<mx:Button x="21" y="144" label="Start Test" click="startTest()"/>
+	<mx:Button id="btnStart" x="21" y="144" label="Start Test" click="startTest()"/>
 </mx:Application>

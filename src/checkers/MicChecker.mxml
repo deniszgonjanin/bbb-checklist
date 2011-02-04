@@ -56,5 +56,5 @@
 					direction="right" mode="manual" visible="true" width="120"/>
 	<mx:HSlider id="sldVolume" minimum="0" maximum="100" change="changeVolume()" labels="[silent, loud]" />
 	<mx:Label text="Adjust Volume" />
-	<mx:ComboBox id="cmbMicSelector" dataProvider="{Microphone.names}" change="changeMic()" />
+	<mx:ComboBox id="cmbMicSelector" dataProvider="{Microphone.names}" change="changeMic()" textAlign="left" width="150" />
 </mx:VBox>
