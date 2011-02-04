@@ -627,7 +627,7 @@
       <dep id="mx.managers:SystemManager" />
       <dep id="uint" />
     </script>
-    <script name="/home/ubuntu/dev/source/bbb-checklist/src/uihelpers/WarningItem.mxml" mod="1296798147000" size="1777" optimizedsize="1717">
+    <script name="/home/ubuntu/dev/source/bbb-checklist/src/uihelpers/WarningItem.mxml" mod="1296858773000" size="1777" optimizedsize="1717">
       <def id="uihelpers:WarningItem" />
       <pre id="mx.controls:Button" />
       <dep id="mx.managers:PopUpManager" />
@@ -1849,7 +1849,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="/home/ubuntu/dev/source/bbb-checklist/src/checkers/MicChecker.mxml" mod="1296798147000" size="4388" optimizedsize="4217">
+    <script name="/home/ubuntu/dev/source/bbb-checklist/src/checkers/MicChecker.mxml" mod="1296858773000" size="4425" optimizedsize="4251">
       <def id="checkers:MicChecker" />
       <pre id="mx.containers:VBox" />
       <pre id="flash.events:IEventDispatcher" />
@@ -2590,7 +2590,7 @@
       <dep id="AS3" />
       <dep id="mx.core:IChildList" />
     </script>
-    <script name="_checkers_WebcamCheckerWatcherSetupUtil.as" mod="1296856986165" size="1046" optimizedsize="954">
+    <script name="_checkers_WebcamCheckerWatcherSetupUtil.as" mod="1296859196857" size="1046" optimizedsize="954">
       <def id="_checkers_WebcamCheckerWatcherSetupUtil" />
       <pre id="mx.binding:IWatcherSetupUtil" />
       <pre id="flash.display:Sprite" />
@@ -2885,7 +2885,7 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="/home/ubuntu/dev/source/bbb-checklist/src/util/PersistUserPreferences.as" mod="1296798147000" size="848" optimizedsize="794">
+    <script name="/home/ubuntu/dev/source/bbb-checklist/src/util/PersistUserPreferences.as" mod="1296858773000" size="1009" optimizedsize="946">
       <def id="util:PersistUserPreferences" />
       <pre id="Object" />
       <dep id="flash.net:SharedObject" />
@@ -3441,7 +3441,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="_BigBlueButtonChecklist_mx_managers_SystemManager.as" mod="1296856986580" size="2829" optimizedsize="2714">
+    <script name="_BigBlueButtonChecklist_mx_managers_SystemManager.as" mod="1296859197683" size="2829" optimizedsize="2714">
       <def id="_BigBlueButtonChecklist_mx_managers_SystemManager" />
       <pre id="mx.core:IFlexModuleFactory" />
       <pre id="mx.managers:SystemManager" />
@@ -4188,7 +4188,7 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="_checkers_MicCheckerWatcherSetupUtil.as" mod="1296856986174" size="914" optimizedsize="827">
+    <script name="_checkers_MicCheckerWatcherSetupUtil.as" mod="1296859196907" size="914" optimizedsize="827">
       <def id="_checkers_MicCheckerWatcherSetupUtil" />
       <pre id="mx.binding:IWatcherSetupUtil" />
       <pre id="flash.display:Sprite" />
@@ -4225,7 +4225,7 @@
       <dep id="flash.net:NetConnection" />
       <dep id="flash.events:NetStatusEvent" />
     </script>
-    <script name="_BigBlueButtonChecklist_FlexInit-generated.as" mod="1296856986578" size="2488" optimizedsize="2334">
+    <script name="_BigBlueButtonChecklist_FlexInit-generated.as" mod="1296859197682" size="2488" optimizedsize="2334">
       <def id="_BigBlueButtonChecklist_FlexInit" />
       <pre id="Object" />
       <dep id="mx.core:IFlexModuleFactory" />
