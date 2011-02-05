@@ -5,3 +5,18 @@ A 'pre-flight' checklist app for joining BigBlueButton conferences. Checks:
 - Flash and Java versions
 
 Saves preferences for Webcams and Mics in a local SharedObject (Flash cookie)
+
+Full List of Potential Problems Checked for
+==========================================
+1. Checks for a Java version installed to be at least what is defined in requirements.xml. If no JRE is installed or if the JRE installed does not meet the required version, the user will be prompted to install one.
+2. Checks that Flash version is at leaset what is defined in requirements.xml. If the Flash version does not meet the required version, the user will be prompted to upgrade Flash.
+3. Checks that a sucessful RTMP connection to the BigBlueButton server defined in requirements.xml can be esablished.
+4. Connects to the BigBlueButton server defined in requirements.xml and streams the webcam back to the user so they can see it.
+5. Connects to the BigBlueButton server defined in requirements.xml and streams the audio back to the user so they can hear it.
+6. Issue with the Google Camera Adapter for Google Video and Voice: https://www.google.com/support/forum/p/chat/thread?tid=0fd25c866ecd895e&hl=en
+7. Mac OSX 10.6.5 and Flash issue with the iSight camera: http://reviews.cnet.com/8301-13727_7-20022842-263.html
+
+Problems Not Checked for Yet
+===========================
+- Establish a successful connection to bbb-apps to make test remote procedure calls.
+- Start the Desktop Sharing applet to stream the desktop video to the server and see if it can receive a response.

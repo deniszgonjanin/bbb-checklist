@@ -463,7 +463,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="/home/ubuntu/dev/source/bbb-checklist/src/checkers/WebcamChecker.mxml" mod="1296799374000" size="6466" optimizedsize="6222">
+    <script name="/home/ubuntu/dev/source/bbb-checklist/src/checkers/WebcamChecker.mxml" mod="1296862071000" size="6509" optimizedsize="6264">
       <def id="checkers:WebcamChecker" />
       <pre id="mx.containers:VBox" />
       <pre id="flash.events:IEventDispatcher" />
@@ -794,7 +794,7 @@
       <dep id="mx.skins.halo:BusyCursor" />
       <dep id="_CursorManagerStyle__embed_css_Assets_swf_mx_skins_cursor_BusyCursor_2014971630" />
     </script>
-    <script name="/home/ubuntu/dev/source/bbb-checklist/src/BigBlueButtonChecklist.mxml" mod="1296856770000" size="4205" optimizedsize="3887">
+    <script name="/home/ubuntu/dev/source/bbb-checklist/src/BigBlueButtonChecklist.mxml" mod="1296862071000" size="4323" optimizedsize="4000">
       <def id="BigBlueButtonChecklist" />
       <pre id="flash.events:IEventDispatcher" />
       <pre id="mx.core:Application" />
@@ -1849,7 +1849,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="/home/ubuntu/dev/source/bbb-checklist/src/checkers/MicChecker.mxml" mod="1296858773000" size="4425" optimizedsize="4251">
+    <script name="/home/ubuntu/dev/source/bbb-checklist/src/checkers/MicChecker.mxml" mod="1296862071000" size="4506" optimizedsize="4332">
       <def id="checkers:MicChecker" />
       <pre id="mx.containers:VBox" />
       <pre id="flash.events:IEventDispatcher" />
@@ -2590,7 +2590,7 @@
       <dep id="AS3" />
       <dep id="mx.core:IChildList" />
     </script>
-    <script name="_checkers_WebcamCheckerWatcherSetupUtil.as" mod="1296861457937" size="1046" optimizedsize="954">
+    <script name="_checkers_WebcamCheckerWatcherSetupUtil.as" mod="1296862860512" size="1046" optimizedsize="954">
       <def id="_checkers_WebcamCheckerWatcherSetupUtil" />
       <pre id="mx.binding:IWatcherSetupUtil" />
       <pre id="flash.display:Sprite" />
@@ -3220,8 +3220,8 @@
       <dep id="mx.styles:CSSStyleDeclaration" />
       <dep id="mx.skins.halo:DefaultDragImage" />
       <dep id="AS3" />
-      <dep id="_DragManagerStyle__embed_css_Assets_swf_mx_skins_cursor_DragCopy_1427193500" />
       <dep id="_DragManagerStyle__embed_css_Assets_swf_mx_skins_cursor_DragMove_1428003640" />
+      <dep id="_DragManagerStyle__embed_css_Assets_swf_mx_skins_cursor_DragCopy_1427193500" />
       <dep id="_DragManagerStyle__embed_css_Assets_swf_mx_skins_cursor_DragLink_1427980045" />
       <dep id="_DragManagerStyle__embed_css_Assets_swf_mx_skins_cursor_DragReject_1303680350" />
     </script>
@@ -3441,7 +3441,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="_BigBlueButtonChecklist_mx_managers_SystemManager.as" mod="1296861458401" size="2829" optimizedsize="2714">
+    <script name="_BigBlueButtonChecklist_mx_managers_SystemManager.as" mod="1296862860956" size="2829" optimizedsize="2714">
       <def id="_BigBlueButtonChecklist_mx_managers_SystemManager" />
       <pre id="mx.core:IFlexModuleFactory" />
       <pre id="mx.managers:SystemManager" />
@@ -4188,7 +4188,7 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="_checkers_MicCheckerWatcherSetupUtil.as" mod="1296861457961" size="914" optimizedsize="827">
+    <script name="_checkers_MicCheckerWatcherSetupUtil.as" mod="1296862860450" size="914" optimizedsize="827">
       <def id="_checkers_MicCheckerWatcherSetupUtil" />
       <pre id="mx.binding:IWatcherSetupUtil" />
       <pre id="flash.display:Sprite" />
@@ -4225,7 +4225,7 @@
       <dep id="flash.net:NetConnection" />
       <dep id="flash.events:NetStatusEvent" />
     </script>
-    <script name="_BigBlueButtonChecklist_FlexInit-generated.as" mod="1296861458372" size="2488" optimizedsize="2334">
+    <script name="_BigBlueButtonChecklist_FlexInit-generated.as" mod="1296862860954" size="2488" optimizedsize="2334">
       <def id="_BigBlueButtonChecklist_FlexInit" />
       <pre id="Object" />
       <dep id="mx.core:IFlexModuleFactory" />
