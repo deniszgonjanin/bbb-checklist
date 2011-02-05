@@ -4,7 +4,7 @@ A 'pre-flight' checklist app for joining BigBlueButton conferences. Checks:
 - Video and Audio streaming connectivity
 - Flash and Java versions
 
-Saves preferences for Webcams and Mics in a local SharedObject (Flash cookie)
+Automatically saves the user's preferences for Webcam and Microphone in a local SharedObject (Flash cookie). These preferences can be loaded by a BigBlueButton client running on the same server. 
 
 Full List of Potential Problems Checked for
 ==========================================
@@ -20,3 +20,7 @@ Problems Not Checked for Yet
 ===========================
 - Establish a successful connection to bbb-apps to make test remote procedure calls.
 - Start the Desktop Sharing applet to stream the desktop video to the server and see if it can receive a response.
+
+Other Problems?
+==============
+If you know of other potential problems that you think this app should check for, please open an issue under the Issues tab.
