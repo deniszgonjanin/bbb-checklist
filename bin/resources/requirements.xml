@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <requirements>
-	<bigbluebutton_apps url="rtmp://191.168.0.191/bigbluebutton">
+	<bigbluebutton_apps url="rtmp://192.168.0.230/bigbluebutton">
 		<join>
 			<fullname>Test User</fullname>
   			<confname>Dev Meeting</confname>
@@ -15,9 +15,11 @@
 		</join>
 	</bigbluebutton_apps>
 	
-	<bigbluebutton_voice url="rtmp://191.168.0.191/video" />
+	<bigbluebutton_voice url="rtmp://192.168.0.230/video" />
 	
-	<bigbluebutton_video url="rtmp://191.168.0.191/video" />
+	<bigbluebutton_video url="rtmp://192.168.0.230/video" />
+	
+	<bigbluebutton_deskshare url="rtmp://192.168.0.230/deskShare" />
 	
 	<java version="1.6.0_22" />
 	

@@ -15,6 +15,7 @@ Learn more about Flex at http://flex.org
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <script src="resources/deployJava.js" language="javascript"></script>
+<script src="resources/applet.js" language="javascript"></script>
 
 <!--  BEGIN Browser History required section -->
 <link rel="stylesheet" type="text/css" href="history/history.css" />
@@ -100,39 +101,6 @@ if ( hasProductInstall && !hasRequestedVersion ) {
   }
 // -->
 
-function startApplet(IP, roomNumber, fullScreen)
-{
-        var iframe = document.createElement("iframe");
-        iframe.id = "iframe";
-        document.body.appendChild(iframe);
-        frames[frames.length - 1].document.write(
-                "<applet code=\"org.bigbluebutton.deskshare.client.DeskShareApplet.class\"" +
-                        "id=\"DeskShareApplet\" width=\"0\" height=\"400\" archive=\"bbb-deskshare-applet-0.71.jar\">" +
-                "<param name=\"ROOM\" value=\"" + roomNumber  + "\"/>" +
-                "<param name=\"IP\" value=\"" + IP + "\"/>" +
-                "<param name=\"FULL_SCREEN\" value=\"" + fullScreen + "\"/>" +          
-        "</applet>"
-     );
-}
-
-function removeFrame () {
-    var iframe = document.getElementById("iframe");
-    iframe.parentNode.removeChild(iframe);
-}
-
-function setScreenCoordinates(x, y) {
-   return frames[frames.length - 1].document.DeskShareApplet.setScreenCoordinates(x,y);
-}
-
-function stopApplet(){
-        frames[frames.length - 1].document.DeskShareApplet.destroy();
-        removeFrame();
-}
-
-function checkForJava(){
-//      if (navigator.javaEnabled() || window.navigator.javaEnabled())
-                return 1;
-}
 </script>
 <noscript>
   	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"

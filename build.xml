@@ -38,12 +38,12 @@
 	<target name="compile-bbb-checklist" description="Compile BigBlueButton Main">
 		<build-main src="${SRC_DIR}" target="${BBB_MAIN}" />
 		
-		<copy todir="${OUTPUT_DIR}/resources" >
-			<fileset dir="${BASE_DIR}/src/resources/" />
-		</copy>		
-
 		<copy file="${BASE_DIR}/resources/BigBlueButtonChecklist.html" todir="${OUTPUT_DIR}" overwrite="true"/>
-                <copy file="${BASE_DIR}/resources/deployJava.js" todir="${OUTPUT_DIR}/resources" overwrite="true"/> 
+                <copy file="${BASE_DIR}/resources/deployJava.js" todir="${OUTPUT_DIR}/resources" overwrite="true"/>
+
+		<copy file="${BASE_DIR}/resources/applet.js" todir="${OUTPUT_DIR}/resources" overwrite="true"/>	
+	
+		<copy file="${BASE_DIR}/html-template/bbb-deskshare-applet-0.71.jar" todir="${OUTPUT_DIR}" overwrite="true"/>
 	</target>
 
 	<macrodef name="build-main">

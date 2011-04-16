@@ -34,7 +34,7 @@
 			}
 			
 			public function saveCurrentWebcam():void{
-				PersistUserPreferences.saveWebcamPreference(cmbCameraSelector.selectedIndex.toString());
+				PersistUserPreferences.saveWebcamPreference(Camera.names[cmbCameraSelector.selectedIndex]);
 			}
 			
 			private function checkIfMacCamera():void{

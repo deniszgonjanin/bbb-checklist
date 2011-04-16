@@ -16,7 +16,7 @@ package util
 		}
 		
 		public static function saveWebcamPreference(webcam:String):void{
-			sharedObject.data.webcam = webcam;
+			sharedObject.data["webcam"] = webcam;
 			try{
 				sharedObject.flush(1000);
 			} catch(err:Error){
@@ -25,7 +25,7 @@ package util
 		}
 		
 		public static function saveMicrophonePreference(microphone:String):void{
-			sharedObject.data.microphone = microphone;
+			sharedObject.data["microphone"] = microphone;
 			try{
 				sharedObject.flush(1000);
 			} catch(err:Error){
@@ -36,7 +36,7 @@ package util
 		public static function saveMicrophoneGain(gain:Number):void{
 			if (gain > 100 || gain < 0) return;
 			
-			sharedObject.data.gain = gain;
+			sharedObject.data["gain"] = gain;
 			try{
 				sharedObject.flush(1000);
 			} catch(err:Error){

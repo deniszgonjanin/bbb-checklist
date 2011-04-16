@@ -122,7 +122,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/WebcamChecker.mxml" mod="1296633358000" size="6509" optimizedsize="6264">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/WebcamChecker.mxml" mod="1302990432000" size="6514" optimizedsize="6267">
       <def id="checkers:WebcamChecker" />
       <pre id="mx.containers:VBox" />
       <pre id="flash.events:IEventDispatcher" />
@@ -150,7 +150,7 @@
       <dep id="util:PersistUserPreferences" />
       <dep id="flash.events:NetStatusEvent" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/BigBlueButtonChecklist.mxml" mod="1296633358000" size="4323" optimizedsize="4000">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/BigBlueButtonChecklist.mxml" mod="1302986451000" size="4654" optimizedsize="4320">
       <def id="BigBlueButtonChecklist" />
       <pre id="flash.events:IEventDispatcher" />
       <pre id="mx.core:Application" />
@@ -188,9 +188,10 @@
       <dep id="mx.controls:Text" />
       <dep id="mx.core:mx_internal" />
       <dep id="uihelpers:WarningsList" />
+      <dep id="checkers:DeskShareChecker" />
       <dep id="_globalStyle" />
-      <dep id="_ListBaseStyle" />
       <dep id="AS3" />
+      <dep id="_ListBaseStyle" />
       <dep id="_ApplicationStyle" />
       <dep id="_ToolTipStyle" />
       <dep id="mx.events:FlexEvent" />
@@ -207,6 +208,7 @@
       <dep id="_ScrollBarStyle" />
       <dep id="_plainStyle" />
       <dep id="_activeButtonStyleStyle" />
+      <dep id="uihelpers:JavaOKEvent" />
       <dep id="checkers:WebcamChecker" />
       <dep id="_weekDayStyleStyle" />
     </script>
@@ -635,19 +637,19 @@
       <dep id="mx.core:Container" />
       <dep id="mx.core:IFlexDisplayObject" />
     </script>
-    <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/containers/HBox)" mod="1251404771693" size="1509" optimizedsize="903">
-      <def id="mx.containers:HBox" />
-      <pre id="mx.containers:Box" />
-      <dep id="AS3" />
-      <dep id="mx.core:mx_internal" />
-      <dep id="mx.containers:BoxDirection" />
-    </script>
     <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/controls/listClasses/ListBaseSelectionDataPending)" mod="1251404757302" size="984" optimizedsize="477">
       <def id="mx.controls.listClasses:ListBaseSelectionDataPending" />
       <pre id="Object" />
       <dep id="mx.collections:CursorBookmark" />
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
+    </script>
+    <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/containers/HBox)" mod="1251404771693" size="1509" optimizedsize="903">
+      <def id="mx.containers:HBox" />
+      <pre id="mx.containers:Box" />
+      <dep id="AS3" />
+      <dep id="mx.core:mx_internal" />
+      <dep id="mx.containers:BoxDirection" />
     </script>
     <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/containers/utilityClasses/ConstraintColumn)" mod="1251404771302" size="4024" optimizedsize="1614">
       <def id="mx.containers.utilityClasses:ConstraintColumn" />
@@ -729,7 +731,7 @@
       <pre id="mx.core:SpriteAsset" />
       <dep id="AS3" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/AudioConnector.as" mod="1296633358000" size="2495" optimizedsize="2420">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/AudioConnector.as" mod="1302986451000" size="2495" optimizedsize="2420">
       <def id="connectors:AudioConnector" />
       <pre id="Object" />
       <dep id="flash.media:Microphone" />
@@ -1205,7 +1207,7 @@
       <dep id="mx.styles:CSSStyleDeclaration" />
       <dep id="AS3" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/AppsConnector.as" mod="1296633358000" size="172" optimizedsize="166">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/AppsConnector.as" mod="1302986451000" size="172" optimizedsize="166">
       <def id="connectors:AppsConnector" />
       <pre id="Object" />
       <dep id="AS3" />
@@ -1244,6 +1246,11 @@
       <dep id="mx.collections:CursorBookmark" />
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
+    </script>
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/JavaOKEvent.as" mod="1302986451000" size="257" optimizedsize="249">
+      <def id="uihelpers:JavaOKEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
     </script>
     <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/modules/ModuleManager)" mod="1251404772771" size="10665" optimizedsize="5453">
       <def id="mx.modules:ModuleManager" />
@@ -1322,10 +1329,11 @@
       <dep id="mx.events:PropertyChangeEvent" />
       <dep id="mx.core:EventPriority" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/SystemCheck.mxml" mod="1296633358000" size="4392" optimizedsize="4246">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/SystemCheck.mxml" mod="1302986451000" size="4482" optimizedsize="4332">
       <def id="checkers:SystemCheck" />
       <pre id="mx.containers:VBox" />
       <dep id="connectors:AppsConnector" />
+      <dep id="uihelpers:JavaOKEvent" />
       <dep id="flash.net:URLRequest" />
       <dep id="AS3" />
       <dep id="trace" />
@@ -1647,7 +1655,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/WarningItem.mxml" mod="1296633358000" size="1777" optimizedsize="1717">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/WarningItem.mxml" mod="1302986451000" size="1777" optimizedsize="1717">
       <def id="uihelpers:WarningItem" />
       <pre id="mx.controls:Button" />
       <dep id="mx.managers:PopUpManager" />
@@ -1803,7 +1811,7 @@
       <dep id="mx.utils:ColorUtil" />
       <dep id="mx.skins.halo:HaloColors" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/WarningEvent.as" mod="1296633358000" size="370" optimizedsize="362">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/WarningEvent.as" mod="1302986451000" size="370" optimizedsize="362">
       <def id="uihelpers:WarningEvent" />
       <pre id="flash.events:Event" />
       <dep id="AS3" />
@@ -1900,7 +1908,7 @@
       <dep id="mx.core:IFlexModuleFactory" />
       <dep id="AS3" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/util/Requirements.as" mod="1296633358000" size="1216" optimizedsize="1167">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/util/Requirements.as" mod="1302988588000" size="1278" optimizedsize="1229">
       <def id="util:Requirements" />
       <pre id="Object" />
       <dep id="flash.net:URLRequestMethod" />
@@ -2125,7 +2133,7 @@
       <pre id="mx.resources:ResourceBundle" />
       <dep id="AS3" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/WarningsList.mxml" mod="1296633358000" size="2126" optimizedsize="2016">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/WarningsList.mxml" mod="1302986451000" size="2126" optimizedsize="2016">
       <def id="uihelpers:WarningsList" />
       <pre id="mx.containers:VBox" />
       <pre id="flash.events:IEventDispatcher" />
@@ -2170,6 +2178,21 @@
       <pre id="Object" />
       <dep id="AS3" />
       <dep id="flash.display:InteractiveObject" />
+    </script>
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/DeskShareConnector.as" mod="1302986451000" size="3979" optimizedsize="3866">
+      <def id="connectors:DeskShareConnector" />
+      <pre id="Object" />
+      <dep id="flash.net:Responder" />
+      <dep id="flash.net:SharedObject" />
+      <dep id="flash.events:AsyncErrorEvent" />
+      <dep id="AS3" />
+      <dep id="trace" />
+      <dep id="flash.events:IOErrorEvent" />
+      <dep id="util:Requirements" />
+      <dep id="flash.events:SecurityErrorEvent" />
+      <dep id="flash.net:NetConnection" />
+      <dep id="Error" />
+      <dep id="flash.events:NetStatusEvent" />
     </script>
     <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/validators/IValidatorListener)" mod="1251404774568" size="1105" optimizedsize="312">
       <def id="mx.validators:IValidatorListener" />
@@ -2808,7 +2831,7 @@
       <dep id="AS3" />
       <dep id="mx.core:mx_internal" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/UserAlert.mxml" mod="1296633358000" size="2858" optimizedsize="2733">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/uihelpers/UserAlert.mxml" mod="1302986451000" size="2858" optimizedsize="2733">
       <def id="uihelpers:UserAlert" />
       <pre id="mx.containers:TitleWindow" />
       <pre id="flash.events:IEventDispatcher" />
@@ -2878,7 +2901,7 @@
       <dep id="flash.display:DisplayObject" />
       <dep id="mx.managers:IFocusManager" />
     </script>
-    <script name="_checkers_WebcamCheckerWatcherSetupUtil.as" mod="1296637733979" size="1046" optimizedsize="954">
+    <script name="_checkers_WebcamCheckerWatcherSetupUtil.as" mod="1302990518366" size="1047" optimizedsize="954">
       <def id="_checkers_WebcamCheckerWatcherSetupUtil" />
       <pre id="mx.binding:IWatcherSetupUtil" />
       <pre id="flash.display:Sprite" />
@@ -3225,7 +3248,7 @@
       <dep id="AS3" />
       <dep id="mx.skins.halo:ToolTipBorder" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/util/JavaCheck.as" mod="1296633358000" size="1517" optimizedsize="1484">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/util/JavaCheck.as" mod="1302986451000" size="1517" optimizedsize="1484">
       <def id="util:JavaCheck" />
       <pre id="Object" />
       <dep id="AS3" />
@@ -3503,7 +3526,7 @@
       <dep id="mx.core:mx_internal" />
       <dep id="flash.geom:Point" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/util/PersistUserPreferences.as" mod="1296633358000" size="1009" optimizedsize="946">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/util/PersistUserPreferences.as" mod="1302989782000" size="1006" optimizedsize="943">
       <def id="util:PersistUserPreferences" />
       <pre id="Object" />
       <dep id="flash.net:SharedObject" />
@@ -3575,7 +3598,7 @@
       <dep id="mx.styles:CSSStyleDeclaration" />
       <dep id="AS3" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/MicChecker.mxml" mod="1296633358000" size="4506" optimizedsize="4332">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/MicChecker.mxml" mod="1302990463000" size="4498" optimizedsize="4322">
       <def id="checkers:MicChecker" />
       <pre id="mx.containers:VBox" />
       <pre id="flash.events:IEventDispatcher" />
@@ -3757,7 +3780,7 @@
       <dep id="mx.core:mx_internal" />
       <dep id="mx.utils:ColorUtil" />
     </script>
-    <script name="_BigBlueButtonChecklist_mx_managers_SystemManager.as" mod="1296637734133" size="2829" optimizedsize="2714">
+    <script name="_BigBlueButtonChecklist_mx_managers_SystemManager.as" mod="1302990518574" size="2829" optimizedsize="2714">
       <def id="_BigBlueButtonChecklist_mx_managers_SystemManager" />
       <pre id="mx.core:IFlexModuleFactory" />
       <pre id="mx.managers:SystemManager" />
@@ -3817,12 +3840,30 @@
       <dep id="flash.system:ApplicationDomain" />
       <dep id="Error" />
     </script>
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/checkers/DeskShareChecker.mxml" mod="1302986451000" size="3504" optimizedsize="3395">
+      <def id="checkers:DeskShareChecker" />
+      <pre id="mx.containers:VBox" />
+      <dep id="mx.core:UIComponent" />
+      <dep id="flash.events:AsyncErrorEvent" />
+      <dep id="trace" />
+      <dep id="mx.core:UIComponentDescriptor" />
+      <dep id="mx.core:mx_internal" />
+      <dep id="flash.external:ExternalInterface" />
+      <dep id="AS3" />
+      <dep id="flash.net:NetStream" />
+      <dep id="connectors:DeskShareConnector" />
+      <dep id="flash.media:Video" />
+      <dep id="util:Requirements" />
+      <dep id="mx.events:FlexEvent" />
+      <dep id="flash.net:NetConnection" />
+      <dep id="flash.events:NetStatusEvent" />
+    </script>
     <script name="/home/firstuser/dev/tools/flex3/frameworks/libs/framework.swc(mx/modules/ModuleManagerGlobals)" mod="1251404772974" size="522" optimizedsize="211">
       <def id="mx.modules:ModuleManagerGlobals" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/VideoConnector.as" mod="1296633358000" size="2370" optimizedsize="2294">
+    <script name="/home/firstuser/dev/source/bbb-checklist/src/connectors/VideoConnector.as" mod="1302986451000" size="2370" optimizedsize="2294">
       <def id="connectors:VideoConnector" />
       <pre id="Object" />
       <dep id="flash.events:AsyncErrorEvent" />
@@ -4293,7 +4334,7 @@
       <dep id="mx.styles:CSSStyleDeclaration" />
       <dep id="AS3" />
     </script>
-    <script name="_checkers_MicCheckerWatcherSetupUtil.as" mod="1296637733962" size="914" optimizedsize="827">
+    <script name="_checkers_MicCheckerWatcherSetupUtil.as" mod="1302990518356" size="914" optimizedsize="827">
       <def id="_checkers_MicCheckerWatcherSetupUtil" />
       <pre id="mx.binding:IWatcherSetupUtil" />
       <pre id="flash.display:Sprite" />
@@ -4320,7 +4361,7 @@
       <dep id="mx.managers.layoutClasses:PriorityQueue" />
       <dep id="mx.core:ApplicationGlobals" />
     </script>
-    <script name="_BigBlueButtonChecklist_FlexInit-generated.as" mod="1296637734132" size="2488" optimizedsize="2334">
+    <script name="_BigBlueButtonChecklist_FlexInit-generated.as" mod="1302990518573" size="2488" optimizedsize="2334">
       <def id="_BigBlueButtonChecklist_FlexInit" />
       <pre id="Object" />
       <dep id="mx.core:IFlexModuleFactory" />
@@ -4677,6 +4718,7 @@
     <ext id="flash.display:Shape" />
     <ext id="flash.events:IEventDispatcher" />
     <ext id="flash.geom:Rectangle" />
+    <ext id="flash.net:Responder" />
     <ext id="String" />
     <ext id="flash.system:Capabilities" />
     <ext id="ArgumentError" />
