@@ -29,23 +29,25 @@
 				this.visible = true;
 				this.videoConnector = new VideoConnector(onNetStatus);
 				
-				checkIfMacCamera();
-				checkIfGoogleTalkPluginInstalled();				
+				var isMac:Boolean = checkIfMacCamera();
+				if (isMac) checkIfGoogleTalkPluginInstalled();				
 			}
 			
 			public function saveCurrentWebcam():void{
 				PersistUserPreferences.saveWebcamPreference(Camera.names[cmbCameraSelector.selectedIndex]);
 			}
 			
-			private function checkIfMacCamera():void{
+			private function checkIfMacCamera():Boolean{
 				for (var i:int = 0; i<Camera.names.length; i++){
 					if (Camera.names[i] == "USB Video Class Video" || Camera.names[i] == "Built-in iSight") {
 						/**
 						 * Set as default for Macs
 						 */
 						cmbCameraSelector.selectedIndex = i;
+						return true;
 					}
 				}
+				return false;
 			}
 			
 			private function checkIfGoogleTalkPluginInstalled():void{
