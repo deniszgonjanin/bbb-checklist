@@ -51,12 +51,12 @@ package connectors
 		private var height:Number;
 		private var uri:String;
 		
+		public var room:String = Math.random().toString();;
+		
 		private var appletStartedCallback:Function;
 		private var startViewingCallback:Function;
 		private var stopViewingCallback:Function;
-		
-		public static const TEST_ROOM:String = "test";
-		
+				
 		public function DeskShareConnector(appletStartedCallback:Function, startViewingCallback:Function, stopViewingCallback:Function)
 		{
 			this.appletStartedCallback = appletStartedCallback;
@@ -67,7 +67,7 @@ package connectors
 		}
 		
 		public function connect():void {
-			this.uri = Requirements.bbb_deskshare_url + "/" + TEST_ROOM;
+			this.uri = Requirements.bbb_deskshare_url + "/" + this.room;
 			trace("Deskshare Service connecting to " + uri);
 			nc = new NetConnection()
 			nc.addEventListener(NetStatusEvent.NET_STATUS, onNetStatus);

@@ -10,7 +10,7 @@ package util
 
 	public class Requirements
 	{
-		public static const DEFAULT_CONFIG:String = "resources/requirements.xml";
+		public static const DEFAULT_CONFIG:String = "../resources/requirements.xml";
 		
 		public static var bbb_apps_url:String;
 		public static var bbb_voice_url:String;

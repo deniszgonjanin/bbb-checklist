@@ -22,15 +22,15 @@
 			 * Call only if the Java check passed. Otherwise launching the applet definitely won't work.
 			 */
 			public function startTheApplet():void{
-				ExternalInterface.call("startApplet", getCaptureServerUri(), DeskShareConnector.TEST_ROOM, true);
+				ExternalInterface.call("startApplet", getCaptureServerUri(), deskshareConnector.room, true);
 			}
 			
 			private function appletStarted(videoWidth:Number, videoHeight:Number):void{
-				startVideo(deskshareConnector.nc, DeskShareConnector.TEST_ROOM, videoWidth, videoHeight);
+				startVideo(deskshareConnector.nc, deskshareConnector.room, videoWidth, videoHeight);
 			}
 			
 			private function startViewing(videoWidth:Number, videoHeight:Number):void{
-				startVideo(deskshareConnector.nc, DeskShareConnector.TEST_ROOM, videoWidth, videoHeight);
+				startVideo(deskshareConnector.nc, deskshareConnector.room, videoWidth, videoHeight);
 			}
 			
 			private function stopViewing():void{
