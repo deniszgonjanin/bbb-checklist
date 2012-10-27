@@ -1,3 +1,5 @@
+__BBB now includes this functionality out of the box. This project is obsolete__
+
 A 'pre-flight' checklist app for joining BigBlueButton conferences. Checks:
 
 - Webcam and Mic availability
